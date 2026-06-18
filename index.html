@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardianes del Humedal - Eldorado</title>
+    <style>
+        /* ESTILOS GENERALES Y TEMÁTICA (Colores de humedal) */
+        :root {
+            --verde-oscuro: #1A472A; /* Tono manglar/vegetación densa */
+            --verde-medio: #2E8B57;
+            --verde-claro: #A3D9A5;
+            --marron-tierra: #8B4513;
+            --crema-fondo: #FDFDF5; /* Fondo suave para lectura */
+            --texto-oscuro: #333333;
+            --blanco: #ffffff;
+            --azul-agua: #0077BE;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--texto-oscuro);
+            background-color: var(--crema-fondo);
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNhM2Q5YTUiIGZpbGwtb3BhY2l0eT0iMC4xNSI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTIwIDIwaDIwdjIwSDIWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4='); /* Textura sutil de fondo */
+        }
+
+        /* Contenedor principal para centrar contenido */
+        .contenedor {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* HEADER / TÍTULO PRINCIPAL Y LOGO */
+        header {
+            background-color: var(--verde-oscuro);
+            background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('http://googleusercontent.com/image_collection/image_retrieval/1902388495534642408_0'); /* Imagen de humedal de fondo */
+            background-size: cover;
+            background-position: center;
+            color: var(--blanco);
+            padding: 60px 20px;
+            border-bottom: 10px solid var(--marron-tierra);
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .header-contenido {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap; /* Permite que se acomode en móviles */
+        }
+
+        .header-texto {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Contenedor del logotipo de CONFÍE */
+        .header-logo-container {
+            background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco sutil para resaltar el logo */
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 280px;
+        }
+
+        .logo-confie {
+            max-width: 100%;
+            height: 150px;
+            max-height: 100px; /* Evita que sea gigante */
+        }
+
+        /* ESTILOS DE SECCIONES */
+        section {
+            background: var(--blanco);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid transparent;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        section:hover {
+            border-left-color: var(--verde-medio);
+        }
+
+        h2 {
+            color: var(--verde-oscuro);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--verde-claro);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '🐊'; /* Icono de cocodrilo antes de cada H2 */
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* ESTILOS PARA LAS IMÁGENES DENTRO DEL CONTENIDO */
+        .imagen-web {
+            display: block;
+            max-width: 100%;
+            height: 300px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            border: 4px solid var(--blanco);
+            outline: 1px solid #ddd;
+        }
+
+        /* DESTACADOS Y CUADROS ESPECIALES */
+        .resaltado-intro {
+            font-style: italic;
+            font-size: 1.1rem;
+            border-left: 5px solid var(--marron-tierra);
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .pregunta-clave {
+            background-color: #ffe0b2; /* Color de alerta suave */
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #fb8c00;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .nom-alerta {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #bee5eb;
+            margin: 15px 0;
+        }
+
+        /* LISTAS DE DATOS Y ACCIONES */
+        .lista-datos, .lista-acciones {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+
+        .lista-datos li, .lista-acciones li {
+            background: rgba(163, 217, 165, 0.2);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .lista-datos li::before {
+            content: '📊'; /* Icono para datos */
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            font-size: 1.2rem;
+        }
+
+        .lista-acciones li::before {
+            content: '✅'; /* Icono para acciones */
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            font-size: 1.2rem;
+        }
+
+        .sub-lista {
+            margin-left: 20px;
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #444;
+            list-style-type: circle;
+        }
+
+        /* ENLACES */
+        .enlace-noticia {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: var(--azul-agua);
+            color: var(--blanco);
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.2s;
+            font-weight: bold;
+        }
+
+        .enlace-noticia:hover {
+            background-color: #00568c;
+        }
+
+        /* FINAL / CONCLUSIÓN */
+        .conclusion {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+            border-top: 10px solid var(--marron-tierra);
+        }
+
+        .conclusion h2 {
+            color: var(--blanco);
+            border-bottom-color: var(--marron-tierra);
+            justify-content: center;
+        }
+        
+        .conclusion h2::before { content: '🌏'; }
+
+        .lema-final {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: var(--verde-claro);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* PIE DE PÁGINA CON LOGOS FINALES */
+        .logos-finales {
+            background-color: #f0f0f0;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .logo-footer {
+            max-width: 40%;
+            height: auto;
+            max-height: 70px;
+            object-fit: contain;
+        }
+
+        /* RESPONSIVE DESIGN (Para celulares) */
+        @media (max-width: 768px) {
+            .header-contenido {
+                flex-direction: column;
+                text-align: center;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header {
+                padding: 40px 15px;
+            }
+            .header-logo-container {
+                margin: 10px auto 0 auto;
+            }
+            .contenedor {
+                padding: 10px;
+            }
+            section {
+                padding: 20px;
+            }
+            .lista-datos li, .lista-acciones li {
+                padding-left: 15px;
+                padding-top: 45px;
+            }
+            .lista-datos li::before, .lista-acciones li::before {
+                top: 10px;
+            }
+            .logos-finales {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .logo-footer {
+                max-width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="contenedor header-contenido">
+            <div class="header-texto">
+                <h1>GUARDIANES DEL HUMEDAL: HOGAR DEL CROCODYLUS ACUTUS</h1>
+                <p>Eldorado, Sinaloa</p>
+            </div>
+            <div class="header-logo-container">
+                <img class="logo-confie" src="logo-confie.jpeg" alt="Logotipo CONFÍE - Ciencia para el Progreso">
+            </div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+
+        <section id="presentacion">
+            <h2>Quiénes Somos</h2>
+            <div class="resaltado-intro">
+                Presentación: Somos un proyecto de investigación y conciencia ambiental que busca comprender y proteger a los cocodrilos y nuestros ecosistemas, ante la exposición a la población de Eldorado, Sinaloa.
+            </div>
+            
+            <div class="pregunta-clave">
+                Últimamente en Eldorado ha habido un incremento en los casos de encuentros entre personas y cocodrilos en zonas pobladas, causando miedo y disgusto para las personas… Pero ¿Porqué está sucediendo?
+            </div>
+        </section>
+
+        <section id="especie">
+            <h2>Conociendo al Protagonista: El Crocodylus Acutus</h2>
+            <p>Comenzaremos presentándote a la única especie de cocodrilo nativa de Sinaloa, y una de las únicas 3 especies nativas de todo México, el Crocodylus Acutus, o mejor conocido cómo cocodrilo de rio o americano, conocerlo es importante si queremos entenderlo, esta especie es sumamente interesante, aquí te platicamos el por qué.</p>
+            
+            <p>Normalmente se tiene el mito de que las especies que habitan en ríos, canales y humedales en Eldorado son solamente caimanes, pero no es así.</p>
+            
+            <img class="imagen-web" src="cocodrilo americano.jpeg" alt="Cocodrilo Americano Crocodylus Acutus">
+
+            <div class="nom-alerta">
+                Este cocodrilo esta catalogado cómo <strong>Sujeto a Protección Especial en México bajo la NOM-059-SEMARNAT 2010</strong>, esto significa, que podría llegar a estar en peligro de extinción si las amenazas que enfrenta continúan, y requieren acciones para conservar sus poblaciones y sus hábitats; Inclusive en Estados Unidos esta especia ya está catalogada oficialmente cómo especie en peligro de extinción.
+            </div>
+        </section>
+
+        <section id="datos">
+            <h2>Datos Súper Interesantes de la Especie</h2>
+            <ul class="lista-datos">
+                <li><strong>Tamaño:</strong> Estos individuos pueden llegar a medir hasta 4 metros, ¡Casi o igual a un automóvil promedio!, siendo los machos más grandes que las hembras.</li>
+                <li><strong>Fisonomía:</strong> Tienen una cabeza estrecha y un hocico largo, lo que lo distingue de los caimanes.</li>
+                <li><strong>El Sexo y la Temperatura:</strong> Las hembras incuban sus huevos para mantenerlos calientes, y aquí te va el dato. A diferencia de nosotros y de otras especies en las que nuestro sexo se determina por cromosomas y genética, en el de esta especie el sexo de las crías está determinado por la temperatura de incubación… es decir, influye completamente la temperatura del medio ambiente.
+                    <ul class="sub-lista">
+                        <li>Temperaturas altas de 31 a 33 grados Celsius, producen crías macho.</li>
+                        <li>Temperaturas inferiores a 31 grados Celsius, producen crías hembra.</li>
+                    </ul>
+                    Esto, a pesar de ser muy interesante, resulta un problem para la conservación de la especie, ya que se ven ligados a la temperatura ambiental, y esta al ir aumentando con el cambio climático, producirá solo crías macho, imposibilitando la reproducción de la especie.
+                </li>
+                <li><strong>Primeros Días:</strong> Tras la eclosión, las crías se alimentan de la yema del huevo durante dos semanas, a medida que crecen, disminuye el número de depredadores potenciales disminuyen, pero estos al ser recién nacidos son muy vulnerables y deben esconderse, al madurar y crecer, estos empiezan a cazar insectos en tierra.
+                    <img class="imagen-web" src="criass-cocodrilo.jpeg" alt="Crías recién nacidas de Crocodylus acutus">
+                </li>
+                <li><strong>Reproducción:</strong> Su temporada de cortejo y apareamiento va desde enero hasta mayo, esto los hace un poco más territoriales y activos, ya que compiten entre machos por las hembras.</li>
+                <li><strong>Longevidad:</strong> ¡Pueden vivir hasta 100 años! Pero su esperanza de vida promedio va desde los 60 hasta los 70 años, estos presentan una alta taza de mortalidad infantil, solo 1 de cada 4 alcanza los 4 años de edad.</li>
+            </ul>
+        </section>
+
+        <section id="conflicto">
+            <h2>¿Por qué están saliendo de su hábitat?</h2>
+            <p>Y por último… Estos animales son sumamente solitarios en su hábitat natural, prefieren estar solos y evitan la mayoría de las perturbaciones, entonces viene la duda, ¿Por qué estos animalitos están saliendo de su hábitat?</p>
+            
+            <p>Muchas personas creen que los cocodrilos están invadiendo las zonas habitadas por los humanos; sin embargo, en realidad somos nosotros quienes hemos ocupado parte de las áreas que utilizan para desplazarse entre ríos, lagunas y otros cuerpos de agua, en busca de un lugar con mejores condiciones para sobrevivir.</p>
+            
+            <p>Con el crecimiento de las ciudades y la expansión de las zonas agrícolas, gran parte de estos corredores naturales se han visto modificados o fragmentados, además, factores como las sequías, el desvío de agua para la agricultura y la disminución de alimento disponible han reducido la calidad de sus hábitats.</p>
+            
+            <p>Ante estas condiciones, los cocodrilos se ven obligados a buscar lugares con mayor disponibilidad de agua y recursos para sobrevivir, como muchas de las zonas urbanizadas se encuentran dentro de sus rutas naturales de desplazamiento originales, ha provocado un aumento en los encuentros entre personas y cocodrilos.</p>
+            
+            <img class="imagen-web" src="habitat-alterado.jpeg" alt="Condiciones de sequía y residuos en el hábitat natural en Eldorado">
+
+            <p>Por lo tanto, el incremento de estos avistamientos no significa que los cocodrilos estén expandiendo su territorio hacia las ciudades, sino que las actividades humanas han alterado sus hábitats y ocupado las zonas por las que tradicionalmente se desplazaban, esto, sumado a los efectos del cambio climático y al uso intensivo del agua, ha favorecido una mayor interacción entre ambas especies.</p>
+            
+            <div class="resaltado-intro">
+                Bien, resumiendo esto, básicamente, su hábitat natural esta cambiando debido a la poca cantidad de agua, la contaminación por basura, y demás acciones humanas, estos deben de desplazarse hacia zonas con mejores condiciones, y lo que hacen es que, por naturaleza, utilizan las rutas que ellos mismos tienen marcadas desde hace mucho tiempo, hacia otros humedales o ríos, ahí se llevan la sorpresa de que al salir, hay más y más urbanización, sus rutas naturales han sido modificadas, generando frustración, ellos solo necesitan llegar a un lugar mejor, no buscan molestarnos ni mucho menos atacarnos, no quieren nada nuestro, solo buscan su hogar.
+            </div>
+        </section>
+
+        <section id="habitat">
+            <h2>Su Hogar en Eldorado y la Importancia del Ecosistema</h2>
+            <p>¿Te gustaría saber cuales son los lugares dónde estos habitan aquí en Eldorado?</p>
+            <p>Sus lugares preferidos son el rio San Lorenzo y la laguna de Chiricahueto, parte del sistema de humedales y manglares, ya que requieren agua dulce o salobre.</p>
+            
+            <img class="imagen-web" src="laguna.jpeg" alt="Ecosistema de Humedal y Manglar">
+
+            <p>Hay un tipo de ecosistema específico que es muy importante en nuestra zona, estos son <strong>los humedales</strong>, estos engloban lagunas, marismas, nos proporciona servicios ambientales, es decir, actúan cómo filtro natural mejorando la calidad del agua, y actúan como esponja, absorbiendo y reteniendo el agua en épocas de lluvias intensas, evitando inundaciones, también son hogar de muchas especies de aves, peces y plantas acuáticas…</p>
+            
+            <p>y ¿Qué crees? Si, el Crocodylus acutus es sumamente importante en este ecosistema, ya que son los principales depredadores, con esto regula poblaciones de peces y otras especies y mantiene el equilibrio de los ecosistemas acuáticos.</p>
+            
+            <div class="pregunta-clave">
+                Con esto entendemos que la especie es importante para el ecosistema, y el ecosistema para nosotros, si el ecosistema se desvanece, perdemos los beneficios que nos brinda, ¡Qué otra razón queremos para cuidarlos a ambos!
+            </div>
+
+            <p>Si te interesa un poco más el tema, querrás saber que ya existe un área protegida por las autoridades del municipio, esta está a cargo de un activista, que busca salvar al cocodrilo de rio ante el crecimiento de la mancha urbana.</p>
+            <a href="https://oem.com.mx/elsoldesinaloa/local/reserva-en-eldorado-busca-salvar-al-cocodrilo-de-rioante-crecimiento-de-la-mancha-urbana-29534702" target="_blank" class="enlace-noticia">Ver noticia sobre la reserva</a>
+        </section>
+
+        <section id="acciones">
+            <h2>¿Qué hacer en caso de un encuentro?</h2>
+            <p>Para finalizar esta pequeña recaudación de información, queremos tener en claro las acciones adecuadas que se deben llevar a cabo en caso de un encuentro con esta especie en áreas urbanizadas.</p>
+            
+            <ul class="lista-acciones">
+                <li>Recuerda mantener distancia y actuar de manera pacífica y tranquila, que ellos están confundidos y pueden sentirse amenazados.</li>
+                <li>Reportar a las autoridades locales, puede ser directamente a 911, ellos pueden canalizarte con la unidad correspondiente.</li>
+            </ul>
+
+            <p>Pero más importante, para prevenir estos encuentros, recuerda <strong>no acercarte voluntariamente a zonas ya marcadas</strong> con presencia de esta especie, <strong>bajar velocidad en carreteras</strong> que estén cerca de estas áreas, y aún mejor, <strong>cuidar el ecosistema</strong>, reduciendo tu uso de agua, evitando totalmente tirar y quemar basura cerca de ellos, y no molestándolos, juntos hacemos la diferencia.</p>
+        </section>
+
+        <footer class="conclusion">
+            <h2>Conclusión</h2>
+            <p>Llegamos a la conclusión de que informar es la mejor manera de accionar, esperamos que esta información te haga reflexionar sobre la importancia de cuidar nuestros ecosistemas, ya que al final, la cadena llega hacia nosotros, y hay consecuencias severas para la población.</p>
+            <p>Proteger al cocodrilo es proteger nuestro ecosistema, nuestra comunidad y a nuestras futuras generaciones.</p>
+            <p class="lema-final">CUIDEMOS NUESTRO ENTORNO, CUIDEMOS LA VIDA.</p>
+        </footer>
+
+        <div class="logos-finales">
+            <img class="logo-footer" src="feria-talentos.jpeg" alt="Feria de Talentos 2026">
+            <img class="logo-footer" src="programa-talentos.jpeg" alt="Programa Talentos">
+        </div>
+
+    </div>
+
+</body>
+</html>
